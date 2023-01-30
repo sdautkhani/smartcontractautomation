@@ -1,0 +1,14 @@
+export const USER_BASE_URL = "http://localhost:5000"; //"http://44.236.19.38:5000";
+export const CREATE_TOKEN_URL = "api/createToken";
+export const USER_LOGIN_URL = "login/signin";
+export const CREATE_USER_URL = "login/register";
+export const COUNTRY_LIST_URL = "login/getCountryList";
+export const GET_TOKEN_LIST = "api/getTokenDetailsbyUser";
+export const GET_SUBSCRIPTION_FEE = "api/getSubscriptionFee";
+export const USER_LOGIN_METAMASK_URL = "login/userLoginViaMetamask";
+export const GET_CONTRACT_VALUE = "api/getContractValues";
+export const CREATE_NFT_URL = "api/createNFT";
+export const CREATE_TOKEN_SALE_URL= "api/createTokenSale";
+export const TOKEN_SALE_DETAILS_URL="api/getTokenSaleDetails";
+export const UPDATE_TOKEN_SALE_URL="api/updateTokenSale";
+export const UPDATE_WHITELIST_ADDRESS_URL="api/updateWhitelistedAddress";
