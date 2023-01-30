@@ -1,0 +1,1556 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger Documentation for Blockchain Api's",
+        "version": "1.0.0",
+        "title": "Blockchain Api's"
+    },
+    "schemes": [
+        "http"
+    ],
+    "host": "localhost:5000",
+    "basePath": "/",
+    "paths": {
+        "/login/signin": {
+            "post": {
+                "summary": "Allow users to login",
+                "description": "Allow users to login with emailid and password",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User Login object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/loginResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login/register": {
+            "post": {
+                "summary": "Create New User",
+                "description": "Create New User",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create user object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "firstName": {
+                                    "type": "string"
+                                },
+                                "lastName": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "email_id": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/signUpResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getCountryList": {
+            "get": {
+                "summary": "Fetch country list",
+                "description": "Fetch country list",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "countryName": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/login/adminLogin": {
+            "post": {
+                "summary": "Allow admin User to login",
+                "description": "Allow admin User to login",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User Login object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/loginResponse"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/createToken": {
+            "post": {
+                "summary": "Create New Token",
+                "description": "Create New Token with billing details",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create Token object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "tokenName": {
+                                    "type": "string"
+                                },
+                                "tokenSymbol": {
+                                    "type": "string"
+                                },
+                                "tokenDecimal": {
+                                    "type": "integer"
+                                },
+                                "initialSupply": {
+                                    "type": "integer"
+                                },
+                                "tokenSupply": {
+                                    "type": "integer"
+                                },
+                                "supplyType": {
+                                    "type": "string"
+                                },
+                                "accessType": {
+                                    "type": "string"
+                                },
+                                "transferType": {
+                                    "type": "string"
+                                },
+                                "varifySource": {
+                                    "type": "boolean"
+                                },
+                                "removeCopy": {
+                                    "type": "boolean"
+                                },
+                                "burnable": {
+                                    "type": "boolean"
+                                },
+                                "mintable": {
+                                    "type": "boolean"
+                                },
+                                "erc": {
+                                    "type": "boolean"
+                                },
+                                "tokenRecover": {
+                                    "type": "boolean"
+                                },
+                                "tokenType": {
+                                    "type": "string"
+                                },
+                                "network": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "commisionFee": {
+                                    "type": "integer"
+                                },
+                                "gasFee": {
+                                    "type": "integer"
+                                },
+                                "subscriptionFee": {
+                                    "type": "string"
+                                },
+                                "createdBy": {
+                                    "type": "string"
+                                },
+                                "txHash": {
+                                    "type": "string"
+                                },
+                                "contractAddress": {
+                                    "type": "string"
+                                },
+                                "reason": {
+                                    "type": "string"
+                                },
+                                "isMetamask": {
+                                    "type": "string"
+                                },
+                                "tokenStandard": {
+                                    "type": "string"
+                                },
+                                "billingDetails": {
+                                    "type": "object",
+                                    "properties": {
+                                        "walletAddress": {
+                                            "type": "string"
+                                        },
+                                        "legalName": {
+                                            "type": "string"
+                                        },
+                                        "emailid": {
+                                            "type": "string"
+                                        },
+                                        "billingAddress": {
+                                            "type": "string"
+                                        },
+                                        "zipCode": {
+                                            "type": "string"
+                                        },
+                                        "city": {
+                                            "type": "string"
+                                        },
+                                        "state": {
+                                            "type": "string"
+                                        },
+                                        "country": {
+                                            "type": "string"
+                                        },
+                                        "taxId": {
+                                            "type": "string"
+                                        },
+                                        "taxRegNumber": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getTokenDetailsbyUser/{userId}/{type}/{pg}": {
+            "get": {
+                "summary": "Fetch Token Details of User",
+                "description": "Fetch Token Details of User by 1.userID 2.type-token standard 3.pg-page number",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "userId to Fetch Token Details for selected User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pg",
+                        "in": "path",
+                        "description": "page number to move to next page",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/tokenDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getTokenDetailsbyId/{tokenId}": {
+            "get": {
+                "summary": "Fetch Token Details of selected TokenId for User",
+                "description": "Fetch Token Details of selected TokenId for User",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tokenId",
+                        "in": "path",
+                        "description": "TokenId to Fetch Token Details",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/tokenDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getSubscriptionFee/{contract}/{network}": {
+            "get": {
+                "summary": "Fetch Subscription Fee  by contract type and network type for User" ,
+                "description": "Fetch Subscription Fee   by contract type and network type for User while token creation",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "contract",
+                        "in": "path",
+                        "description": "contract to Fetch Subscription Fee Details by contract type selected",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "network",
+                        "in": "path",
+                        "description": "network to Fetch Subscription Fee Details by network type selected",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/subscriptionFeeDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getContractValues/{featueList}": {
+            "get": {
+                "summary": "Fetch the contact abi and byte code for User",
+                "description": "Fetch the contact abi and byte code for User",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "featueList",
+                        "in": "path",
+                        "description": "featueList is name of .sol file from which contact abi and byte code is generated",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "byteCode": {
+                                        "type": "string"
+                                    },
+                                    "contractABI": {
+                                        "type": "array"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/createTokenSale": {
+            "post": {
+                "summary": "Create Token Sale",
+                "description": "Create Token Sale",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create Token Sale object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "tokenAddress": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "tokenOnSale": {
+                                    "type": "integer"
+                                },
+                                "tokenPrice": {
+                                    "type": "integer"
+                                },
+                                "supply": {
+                                    "type": "string"
+                                },
+                                "hardCap": {
+                                    "type": "integer"
+                                },
+                                "softCap": {
+                                    "type": "integer"
+                                },
+                                "addressType": {
+                                    "type": "string"
+                                },
+                                "startDate": {
+                                    "type": "string"
+                                },
+                                "endDate": {
+                                    "type": "string"
+                                },
+                                "claimDate": {
+                                    "type": "string"
+                                },
+                                "maxInvest": {
+                                    "type": "integer"
+                                },
+                                "minInvest": {
+                                    "type": "integer"
+                                },
+                                "ownerAddress": {
+                                    "type": "string"
+                                },
+                                "saleRate": {
+                                    "type": "integer"
+                                },
+                                "selectedPayment": {
+                                    "type": "string"
+                                },
+                                "chainId": {
+                                    "type": "integer"
+                                },
+                                "createdBy": {
+                                    "type": "string"
+                                },
+                                "txHash": {
+                                    "type": "string"
+                                },
+                                "contractAddress": {
+                                    "type": "string"
+                                },
+                                "reason": {
+                                    "type": "string"
+                                },
+                                "deployViaMetamask": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/createNFT": {
+            "post": {
+                "summary": "Create NFT",
+                "description": "Create NFT",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Create NFT object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "imgUrl": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "symbol": {
+                                    "type": "string"
+                                },
+                                "description": {
+                                    "type": "integer"
+                                },
+                                "isPublicMint": {
+                                    "type": "boolean"
+                                },
+                                "startTime": {
+                                    "type": "string"
+                                },
+                                "endTime": {
+                                    "type": "string"
+                                },
+                                "mintPrice": {
+                                    "type": "integer"
+                                },
+                                "amountPerUser": {
+                                    "type": "string"
+                                },
+                                "maxAmount": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                },
+                                "maxInvest": {
+                                    "type": "integer"
+                                },
+                                "minInvest": {
+                                    "type": "integer"
+                                },
+                                "createdBy": {
+                                    "type": "string"
+                                },
+                                "txHash": {
+                                    "type": "string"
+                                },
+                                "contractAddress": {
+                                    "type": "string"
+                                },
+                                "reason": {
+                                    "type": "string"
+                                },
+                                "deployViaMetamask": {
+                                    "type": "boolean"
+                                },
+                                "tokenStandard": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getTokenSaleDetails/{tokenId}": {
+            "get": {
+                "summary": "Fetch the token sale details for User",
+                "description": "Fetch the token sale details by tokenid for User",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tokenId",
+                        "in": "path",
+                        "description": "tokenId is the contract address for which token sale is created",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/tokenSaleDetails"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateTokenSale": {
+            "post": {
+                "summary": "Update Token  Sale",
+                "description": "Update Token sale info till 10 min befor token sale start like start time,end time,token sale url,token address",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Update Token  Sale object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "details": {
+                                    "type": "object",
+                                    "properties":{
+                                        "startDate": {
+                                            "type": "string"
+                                        },
+                                        "endDate": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "id": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/updateWhitelistedAddress": {
+            "post": {
+                "summary": "Whitelist the token address",
+                "description": "Whitelist the token address",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Whitelist token address object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "addressList": {
+                                    "type": "array"
+                                },
+                                "contractAddress": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getAllUserDetails/{pg}": {
+            "get": {
+                "summary": "Fetch User list for Admin",
+                "description": "Fetch User list for Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "pg",
+                        "in": "path",
+                        "description": "page number to move to next page",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "_id": {
+                                        "type": "string"
+                                    },
+                                    "firstName": {
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "type": "string"
+                                    },
+                                    "email_id": {
+                                        "type": "string"
+                                    },
+                                    "userName": {
+                                        "type": "string"
+                                    },
+                                    "userCountry": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "_id": {
+                                                    "type": "string"
+                                                },
+                                                "countryName": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getTokenDetailsbyUser/{userId}/{pg}": {
+            "get": {
+                "summary": "Fetch Token Details of User for admin",
+                "description": "Fetch Token Details of User for admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "userId to Fetch Token Details for selected User",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pg",
+                        "in": "path",
+                        "description": "page number to move to next page",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/tokenDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getTokenDetailsbyId/{tokenId}": {
+            "get": {
+                "summary": "Fetch Token Details of selected TokenId for Admin",
+                "description": "Fetch Token Details of selected TokenId for Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "tokenId",
+                        "in": "path",
+                        "description": "TokenId to Fetch Token Details",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/tokenDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getTokenDetails/{pg}": {
+            "get": {
+                "summary": "Fetch Token Details  for admin",
+                "description": "Fetch Token Details for admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "pg",
+                        "in": "path",
+                        "description": "page number to move to next page",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/tokenDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getSubscriptionFeeList": {
+            "get": {
+                "summary": "Fetch Subscription Fee List for Admin",
+                "description": "Fetch Subscription Fee List for Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/subscriptionFeeDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/getSubscriptionFee/{id}": {
+            "get": {
+                "summary": "Fetch Subscription Fee  by Id for Admin",
+                "description": "Fetch Subscription Fee   by Id for Admin",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id to Fetch Subscription Fee Details",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "$ref": "#/definitions/subscriptionFeeDetails"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/updateSubscriptionFee": {
+            "post": {
+                "summary": "Update Subscription Fee",
+                "description": "Update Subscription Fee",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Subscription Fee object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "feeIn$": {
+                                    "type": "string"
+                                },
+                                "contract_type": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/updateTokenStatus": {
+            "post": {
+                "summary": "Update Token Status",
+                "description": "Update Token Status",
+                "produces": [
+                    "application/json"
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Token Status object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "status": {
+                                    "type": "string"
+                                },
+                                "remark": {
+                                    "type": "string"
+                                },
+                                "userName": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "msg": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value",
+                        "schema": {
+                            "$ref": "#/definitions/InvalidResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "LoginRequest": {
+            "type": "object",
+            "properties": {
+                "username": {
+                    "type": "string",
+                    "required": true
+                },
+                "password": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "loginResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "signUpRequest": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "email_id": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "signUpResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "tokenDetails": {
+            "type": "object",
+            "properties": {
+                "tokenName": {
+                    "type": "string"
+                },
+                "tokenSymbol": {
+                    "type": "integer"
+                },
+                "tokenDecimal": {
+                    "type": "integer"
+                },
+                "initialSupply": {
+                    "type": "integer"
+                },
+                "totalSupply": {
+                    "type": "integer"
+                },
+                "supplyType": {
+                    "type": "string"
+                },
+                "accessType": {
+                    "type": "string"
+                },
+                "transferType": {
+                    "type": "string"
+                },
+                "varifySource": {
+                    "type": "boolean"
+                },
+                "removeCopy": {
+                    "type": "boolean"
+                },
+                "burnable": {
+                    "type": "boolean"
+                },
+                "mintable": {
+                    "type": "boolean"
+                },
+                "erc": {
+                    "type": "boolean"
+                },
+                "tokenRecover": {
+                    "type": "boolean"
+                },
+                "tokenType": {
+                    "type": "string"
+                },
+                "network": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                },
+                "commisionFee": {
+                    "type": "integer"
+                },
+                "gasFee": {
+                    "type": "integer"
+                },
+                "subscriptionFee": {
+                    "type": "string"
+                },
+                "createdOn": {
+                    "type": "dateTime"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "txHash": {
+                    "type": "string"
+                },
+                "contractAddress": {
+                    "type": "string"
+                },
+                "reason": {
+                    "type": "string"
+                },
+                "isMetamask": {
+                    "type": "string"
+                },
+                "tokenStandard": {
+                    "type": "string"
+                },
+                "subscriptionFees": {
+                    "type": "object",
+                    "properties": {
+                        "_id": {
+                            "type": "string"
+                        },
+                        "contractType": {
+                            "type": "string"
+                        },
+                        "feeIn$": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "updatedBy": {
+                            "type": "string"
+                        },
+                        "createdBy": {
+                            "type": "string"
+                        },
+                        "createdOn": {
+                            "type": "dateTime"
+                        },
+                        "updatedOn": {
+                            "type": "dateTime"
+                        }
+                    }
+                }
+            }
+        },
+        "subscriptionFeeDetails": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "contractType": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "integer"
+                },
+                "createdOn": {
+                    "type": "dateTime"
+                },
+                "feeIn$": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "updatedBy": {
+                    "type": "string"
+                },
+                "updatedOn": {
+                    "type": "dateTime"
+                }
+            }
+        },
+        "tokenSaleDetails":{
+            "type":"object",
+            "properties":{
+                "_id": {
+                  "type": "string"
+              },
+                "tokenAddress": {
+                  "type": "string"
+              },
+                "tokenName":{
+                  "type": "string"
+              },
+                "tokenSymbol": {
+                  "type": "string"
+              },
+                "tokenOnSale": {
+                  "type": "integer"
+              },
+                "tokenPrice": {
+                  "type": "integer"
+              },
+                "supply": {
+                  "type": "string"
+              },
+                "hardCap": {
+                  "type": "integer"
+              },
+                "softCap": {
+                  "type": "integer"
+              },
+                "addressType": {
+                  "type": "string"
+              },
+                "startDate": {
+                  "type": "string"
+              },
+                "endDate": {
+                  "type": "string"
+              },
+                "claimDate":{
+                  "type": "string"
+              },
+                "maxInvest": {
+                  "type": "integer"
+              },
+                "minInvest": {
+                  "type": "integer"
+              },
+                "ownerAddress": {
+                  "type": "string"
+              },
+                "saleRate": {
+                  "type": "integer"
+              },
+                "selectedPayment": {
+                  "type": "string"
+              },
+                "chainId": {
+                  "type": "integer"
+              },
+                "createdOn": {
+                  "type": "string"
+              },
+                "createdBy": {
+                  "type": "string"
+              },
+                "txHash": {
+                  "type": "string"
+              },
+                "contractAddress": {
+                  "type": "string"
+              },
+                "reason": {
+                  "type": "string"
+              },
+                "isMetamask": {
+                  "type": "boolean"
+              }
+              }
+        }
+    }
+}
